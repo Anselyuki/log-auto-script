@@ -1,12 +1,10 @@
 use std::fs;
 use std::fs::File;
 use std::io::Write;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 use std::process::exit;
 
-use lazy_static::lazy_static;
 use log::{error, info, warn};
-use platform_dirs::AppDirs;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 
