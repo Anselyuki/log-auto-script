@@ -1,8 +1,11 @@
+use serde::{Deserialize, Serialize};
+
 pub mod qian_wen_model;
 
 /// # 对应平台的适配器枚举
 ///
 /// 用于选择不同的平台适配器,目前使用通义千问实现日志解析
+#[derive(Serialize, Deserialize)]
 pub enum ModelAdapterEnum {
     /// 通义千问
     QianWen,

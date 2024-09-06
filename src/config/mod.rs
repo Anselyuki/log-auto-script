@@ -4,6 +4,7 @@ use std::io::Write;
 use std::path::Path;
 use std::process::exit;
 
+use crate::clients::ModelAdapterEnum;
 use log::{error, info, warn};
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
@@ -23,11 +24,12 @@ pub mod consts {
 }
 
 /// 配置文件解析结果
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize)]
 pub struct Profile {
     pub repo_path: Vec<String>,
     pub branches: Vec<String>,
     pub authors: Vec<String>,
+    pub model_type: ModelAdapterEnum,
     pub authorization: Option<String>,
 }
 
@@ -125,7 +127,8 @@ impl Profile {
             repo_path: vec!["/path/to/your/repo".to_string()],
             branches: vec!["master".to_string()],
             authors: vec!["your_name".to_string()],
-            authorization: Some("Bearer your_token".to_string()),
+            model_type: ModelAdapterEnum::QianWen,
+            authorization: Some("your_token".to_string()),
         }
     }
 }

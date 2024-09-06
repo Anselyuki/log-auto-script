@@ -47,7 +47,7 @@ fn main() {
     let log_vec = repository::log_distant(&mut logs);
 
     // 打印日志
-    for log in &log_vec {
+    for log in log_vec.iter().rev() {
         info!("{}", log);
     }
     if log_vec.is_empty() {
@@ -72,6 +72,7 @@ mod command {
     #[command(name = "log-auto-script", bin_name = "log-auto-script")]
     #[command(author, about, version, next_line_help = false)]
     pub struct AutoLoggerArgs {
+        #[arg(short, long)]
         pub author: Option<String>,
         #[arg(short, long)]
         pub year: Option<i32>,
